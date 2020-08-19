@@ -7,12 +7,8 @@ service {
         group root
         pidfile /var/run/aerospike/asd.pid
         paxos-single-replica-limit {{ paxos_single_replica_limit | default(1) }} # Number of nodes where the replica count is automatically reduced to 1.
-        service-threads {{ aerospike_service_threads }}
-        transaction-queues {{ aerospike_transaction_queues }}
-        transaction-threads-per-queue {{ aerospike_transaction_threads }}
-        proto-fd-max {{ aerospike_proto_fd_max | default(15000) }}
-        proto-fd-idle-ms {{ aerospike_proto_fd_idle_ms | default(60000) }}
 }
+
 logging {
         # Log file must be an absolute path.
         file {{ aerospike_log_directory }}/aerospike.log {
