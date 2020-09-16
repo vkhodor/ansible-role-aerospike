@@ -24,7 +24,7 @@
     validate_certs: no
 
 - name: install aerospike.
-  shell: 'cd {{ aerospike_source_directory }}/{{ aerospike_package_name }}; ./asinstall'
+  shell: 'cd {{ aerospike_source_directory }}/{{ aerospike_package_name }}; ./asinstall; exit 0'
 
 - name: Place Aerospike configuration file.
   template:
