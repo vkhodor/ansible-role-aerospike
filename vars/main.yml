@@ -2,4 +2,4 @@
 aerospike_download_url:
   https://www.aerospike.com/enterprise/download/server/{{ aerospike_version }}/artifact/{{ aerospike_distro_download }}
 aerospike_package_name:
-  aerospike-server-enterpise-{{ aerospike_version }}-{{ aerospike_distro_download }}
+  aerospike-server-enterprise-{{ aerospike_version }}-{{ aerospike_distro_download }}
