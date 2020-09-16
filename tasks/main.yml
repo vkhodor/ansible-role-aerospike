@@ -38,24 +38,6 @@
     - "{{ aerospike_rpms.files }}"
   notify:
     - start aerospike
-  when: ansible_os_family == 'RedHat'
-
-- name: Get Names of Aerospike DEB Packages.
-  find:
-    paths: "{{ aerospike_source_directory }}/{{ aerospike_package_name }}"
-    patterns: "^(aerospike-(?:server|tools).+\\.deb)$"
-    use_regex: true
-  register: aerospike_debs
-
-- name: Install Aerospike package from deb.
-  apt:
-    deb: "{{ item.path }}"
-    install_recommends: yes
-  with_items:
-    - "{{ aerospike_debs.files }}"
-  notify:
-    - start aerospike
-  when: ansible_os_family == 'Debian'
 
 - name: Place Aerospike configuration file.
   template:
