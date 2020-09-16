@@ -23,21 +23,8 @@
     remote_src: True
     validate_certs: no
 
-- name: Get Names of Aerospike RPM Packages.
-  find:
-    paths: "{{ aerospike_source_directory }}/{{ aerospike_package_name }}"
-    patterns: "^(aerospike-(?:server|tools).+\\.rpm)$"
-    use_regex: true
-  register: aerospike_rpms
-
-- name: Install Aerospike package from rpm.
-  yum:
-    name: "{{ item.path }}"
-    state: present
-  with_items:
-    - "{{ aerospike_rpms.files }}"
-  notify:
-    - start aerospike
+- name: install aerospike.
+  shell: 'cd {{ aerospike_source_directory }}/{{ aerospike_package_name }}; ./asinstall'
 
 - name: Place Aerospike configuration file.
   template:
