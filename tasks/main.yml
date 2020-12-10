@@ -26,12 +26,14 @@
 - name: install aerospike.
   shell: 'cd {{ aerospike_source_directory }}/{{ aerospike_package_name }}; ./asinstall; exit 0'
 
-- name: Place Aerospike configuration file.
-  template:
-    src: aerospike.conf.j2
-    dest: "{{ aerospike_config_destination }}"
-    owner: root
-    group: root
-    force: yes
-  notify:
-    - start aerospike
+# Config is not relevan for our configuration.
+#
+#- name: Place Aerospike configuration file.
+#  template:
+#    src: aerospike.conf.j2
+#    dest: "{{ aerospike_config_destination }}"
+#    owner: root
+#    group: root
+#    force: yes
+#  notify:
+#    - start aerospike
